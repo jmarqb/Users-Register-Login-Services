@@ -88,6 +88,12 @@ This will start the server and the application will be available at http://local
 
 Remember to replace <your_port> with the port number you have configured in your .env file. and set the NODE_ENV= environment variable in your .env file.
 
+* Executed Seed (If you need a provide info to add the database) use the endpoint:
+```
+http://localhost:3000/api/seed
+```
+
+
 ## Using Docker
 
 If you have Docker and Docker Compose installed, running the application becomes even easier. First, you need to clone the repository and navigate to the project directory:
