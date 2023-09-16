@@ -86,6 +86,8 @@ $ npm run start
 
 This will start the server and the application will be available at http://localhost:<your_port>
 
+For example: `localhost:<port>/api/documentation`
+
 Remember to replace <your_port> with the port number you've set in your .env file, ensure the NODE_ENV= environment variable is also set in the .env file, and make sure PostgreSQL is running as specified in the prerequisites.
 
 * [Optional] If you need in the project exists a file `docker-development-locally.yaml` with a configuration a postgreSQL container for development locally in your computer, for run this container
