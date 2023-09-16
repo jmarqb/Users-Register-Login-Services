@@ -23,7 +23,7 @@ describe('AppController (e2e)', () => {
 
     console.log('Starting PostgreSQL container...');
     container = await new PostgreSqlContainer().withDatabase(`${process.env.DATABASE_NAME_TEST_E2E}`)
-      .withExposedPorts({ container: 5432, host: 5432 })
+      .withExposedPorts({ container: 5432, host: Number(`${process.env.DATABASE_PORT_TEST_E2E}`) })
       .withUsername(`${process.env.DATABASE_USERNAME_TEST_E2E}`)
       .withPassword(`${process.env.DATABASE_PASSWORD_TEST_E2E}`)
       .start();
