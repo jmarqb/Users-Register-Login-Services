@@ -97,7 +97,7 @@ $ docker-compose -f docker-development-locally.yaml up -d
 
 * Executed Seed (If you need a provide info to add the database) use the endpoint:
 ```
-http://localhost:3000/api/seed
+http://localhost:<your_port>/api/seed
 ```
 
 
