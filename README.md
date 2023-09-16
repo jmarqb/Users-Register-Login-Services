@@ -92,7 +92,7 @@ Remember to replace <your_port> with the port number you've set in your .env fil
 execute the following command:
 
 ```bash
-$ docker-compose -f docker-development-locally.yaml up
+$ docker-compose -f docker-development-locally.yaml up -d
 ```
 
 * Executed Seed (If you need a provide info to add the database) use the endpoint:
