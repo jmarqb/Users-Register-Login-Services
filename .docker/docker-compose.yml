@@ -9,8 +9,8 @@ services:
       - PORT=3000
       - DB_HOST=postgresql
       - DB_PORT=5432
-      - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_USER=myusername
+      - DB_PASSWORD=mypassword
       - DB_DATABASE=UserDB
 
   nginx:  
@@ -26,12 +26,13 @@ services:
   postgresql:
     image: postgres:14.3
     ports:
-      - "7005:5432"
+      - "3001:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
       - ./postgresql-init-scripts:/docker-entrypoint-initdb.d
     environment:
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: myusername
+      POSTGRES_PASSWORD: mypassword
       POSTGRES_DB: UserDB
     container_name: userdb_docker
 
