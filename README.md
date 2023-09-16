@@ -42,7 +42,7 @@ A list of technologies used within the project:
 Before you begin, ensure you have met the following requirements:
 * You have installed node.js and npm.
 * You have a PostgreSQL running.
-* Docker and Docker Compose(to run the application with Docker. To run test e2e with testcontainers. If you need in the folder ./docker/for-development exist a file docker-compose with a configuration a postgreSQL container for development locally in your computer). 
+* Docker and Docker Compose(if you prefer to run the application with Docker or to run e2e tests with testcontainers)
 
 
 ## Installation
@@ -75,6 +75,11 @@ $ cp .env.example .env
 
 In the .env file, set the NODE_ENV= environment variable to 'testing', 'production', or 'development'. This determines the application's launch mode. The specified mode will dictate which database connection credentials are used.
 
+This is a Example-Configuration-EnvironmentVariables-And-Docker-Compose
+## Example of Configuration
+
+![Example-Configuration-EnvironmentVariables-And-Docker-Compose](assets/example-config-docker-compose.png)
+
 ## Running the Application
 
 To run Users Register and Authentication API, use the following command:
@@ -86,7 +91,11 @@ $ npm run start
 
 This will start the server and the application will be available at http://localhost:<your_port>
 
-Remember to replace <your_port> with the port number you have configured in your .env file. and set the NODE_ENV= environment variable in your .env file. and meet as set out in the prerequisites: with PostgreSQL running on your local machine.(If you need in the folder ./docker/for-development exist a file docker-compose with a configuration a postgreSQL container for development locally in your computer)
+Remember to replace <your_port> with the port number you have configured in your .env file. and set the NODE_ENV= environment variable in your .env file. and meet as set out in the prerequisites: with PostgreSQL running on your local machine.
+
+* [Optional] If you need in the folder ./docker/for-development exist a file docker-compose with a configuration a postgreSQL container for development locally in your computer - In this docker-compose replace the values 
+POSTGRES_PASSWORD: <your_.env_DBPassword> ,POSTGRES_DB: <your_.env_DBName> and POSTGRES_USER:<your_.env_DBUser>).
+[View the Example of Configuration](#example-of-configuration)
 
 * Executed Seed (If you need a provide info to add the database) use the endpoint:
 ```
@@ -108,9 +117,11 @@ To run the application with Docker, we provide the sample .env configuration wit
 `PORT=3000`
 `DB_HOST=postgresql`
 `DB_PORT=5432`
-`DB_USER=postgres`
-`DB_PASSWORD=postgres`
+`DB_USER=myusername`
+`DB_PASSWORD=mypassword`
 `DB_DATABASE=UserDB`
+
+If you need to establish your own configuration for docker-compose [View the Example of Configuration](#example-of-configuration)
 
 To start the application with Docker:
 
@@ -149,6 +160,6 @@ It's important to highlight that these e2e tests utilize a Docker testcontainer 
 ## API Documentation
 
 Our API documentation is available at `localhost:<port>/api/documentation` 
- Example : when you run the server locally. "localhost:3000/api/documentation"
+For example, when running the server locally, it will be available at localhost:3000/api/documentation
 
 For more detailed information about the endpoints, responses, and status codes, visit the API documentation.
