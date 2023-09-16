@@ -13,7 +13,7 @@
 ***
 Users Register and Authentication API
 
-This project is an API developed to control service of register and login of users.
+This project is an API developed to manage user registration and authentication services.
 
 ### Technologies
 ***
@@ -41,8 +41,8 @@ A list of technologies used within the project:
 ***
 Before you begin, ensure you have met the following requirements:
 * You have installed node.js and npm.
-* You have a PostgreSQL running.
-* Docker and Docker Compose(if you prefer to run the application with Docker or to run e2e tests with testcontainers)
+* You have PostgreSQL running.
+* Docker and Docker Compose installed(if you prefer to run the application with Docker or to run e2e tests with testcontainers)
 
 
 ## Installation
@@ -65,7 +65,7 @@ $ npm install
 
 ## Configuration
 
-Copy .env.example to .env and update it with your PostgreSQL connection parameters.
+Copy the contents of .env.example into a new .env file and update it with your PostgreSQL connection parameters.
 
 Linux/Windows:
 ```
@@ -73,12 +73,7 @@ $ cp .env.example .env
 > copy .env.example .env
 ```
 
-In the .env file, set the NODE_ENV= environment variable to 'testing', 'production', or 'development'. This determines the application's launch mode. The specified mode will dictate which database connection credentials are used.
-
-This is a Example-Configuration-EnvironmentVariables-And-Docker-Compose
-## Example of Configuration
-
-![Example-Configuration-EnvironmentVariables-And-Docker-Compose](assets/example-config-docker-compose.png)
+In the .env file, set the NODE_ENV= environment variable to 'testing', 'production', or 'development'. This determines the application's launch mode, dictating which database connection credentials to use.
 
 ## Running the Application
 
@@ -91,11 +86,14 @@ $ npm run start
 
 This will start the server and the application will be available at http://localhost:<your_port>
 
-Remember to replace <your_port> with the port number you have configured in your .env file. and set the NODE_ENV= environment variable in your .env file. and meet as set out in the prerequisites: with PostgreSQL running on your local machine.
+Remember to replace <your_port> with the port number you've set in your .env file, ensure the NODE_ENV= environment variable is also set in the .env file, and make sure PostgreSQL is running as specified in the prerequisites.
 
-* [Optional] If you need in the folder ./docker/for-development exist a file docker-compose with a configuration a postgreSQL container for development locally in your computer - In this docker-compose replace the values 
-POSTGRES_PASSWORD: <your_.env_DBPassword> ,POSTGRES_DB: <your_.env_DBName> and POSTGRES_USER:<your_.env_DBUser>).
-[View the Example of Configuration](#example-of-configuration)
+* [Optional] If you need in the project exists a file `docker-development-locally.yaml` with a configuration a postgreSQL container for development locally in your computer, for run this container
+execute the following command:
+
+```bash
+$ docker-compose -f docker-development-locally.yaml up
+```
 
 * Executed Seed (If you need a provide info to add the database) use the endpoint:
 ```
@@ -105,23 +103,14 @@ http://localhost:3000/api/seed
 
 ## Using Docker
 
-If you have Docker and Docker Compose installed, running the application becomes even easier. First, you need to clone the repository and navigate to the project directory:
+If you have Docker and Docker Compose installed, running the application becomes even easier. First, clone the repository and navigate to the project directory:
 
 ```bash
 $ git clone https://github.com/jmarqb/Users-Register-Login-Services.git
 $ cd Users-Register-Login-Services/.docker
 ```
 
-To run the application with Docker, we provide the sample .env configuration with the parameters we used for it.
-
-`PORT=3000`
-`DB_HOST=postgresql`
-`DB_PORT=5432`
-`DB_USER=myusername`
-`DB_PASSWORD=mypassword`
-`DB_DATABASE=UserDB`
-
-If you need to establish your own configuration for docker-compose [View the Example of Configuration](#example-of-configuration)
+To run the application with Docker, ensure that you've completed the .env configuration with the necessary parameters for the container environment. [View the configuration section](#configuration)
 
 To start the application with Docker:
 
@@ -129,7 +118,7 @@ To start the application with Docker:
 $ docker-compose up --build
 ```
 
-This will build the necessary images, start the containers, and the application will be available at http://localhost:3000.
+This will build the necessary images, start the containers, and the application will be available at http://localhost:<your_port>.
 
 To stop the application:
 
@@ -137,11 +126,18 @@ To stop the application:
 $ docker-compose down
 ```
 
+* [Optional] If you need in the project exists a file `docker-development-locally.yaml` with a configuration a postgreSQL container for development locally in your computer, for run this container
+execute the following command:
+
+```bash
+$ docker-compose -f docker-development-locally.yaml up
+```
+
 ## Test
 
-To ensure everything runs smoothly, this project includes both Unit and Integration tests using the tools Jest and Supertest. Follow these steps to execute them:
+To ensure everything runs smoothly, this project includes both Unit and Integration tests using the tools Jest and Supertest. To execute them, follow these steps:
 
-Dependency Installation: Before running the tests, ensure you have all the project dependencies installed. If you haven't done so yet, you can install them by executing the command `npm install`.
+Dependency Installation: Before running the tests, ensure you've installed all the project dependencies. If you haven't done so yet, you can install them by executing the command `npm install`.
 
 Unit Tests: To run unit tests on controllers and services, use the following command:
 
@@ -159,7 +155,7 @@ It's important to highlight that these e2e tests utilize a Docker testcontainer 
 
 ## API Documentation
 
-Our API documentation is available at `localhost:<port>/api/documentation` 
+You can access the API documentation at `localhost:<port>/api/documentation` 
 For example, when running the server locally, it will be available at localhost:3000/api/documentation
 
 For more detailed information about the endpoints, responses, and status codes, visit the API documentation.
