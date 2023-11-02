@@ -27,7 +27,7 @@ export class AuthService {
     
         const user = await this.userRepository.findOne({
           where: { email },
-          select: { email: true, password: true, id: true, isActive: true } 
+          select: { email: true, password: true, id: true, isActive: true, roles:true } 
         });
         if (!user){
           this.logger.warn(`Failed login attempt for user,Credentials are not valid`);
@@ -49,7 +49,7 @@ export class AuthService {
           this.logger.log(`User ${email} logged in successfully`);
         return {
           ...user,
-          token: this.getJwtToken({ id: user.id })
+          token: this.getJwtToken({ id: user.id, roles: user.roles })
         };
     
       } 
@@ -57,12 +57,12 @@ export class AuthService {
       async checkAuthStatus(user: User) {
         return {
           user,
-          token: this.getJwtToken({ id: user.id })
+          token: this.getJwtToken({ id: user.id, roles:user.roles })
         }
       }
     
       private getJwtToken(payload: JwtPayload) {
-    
+        console.log('Token Payload:', payload);
         const token = this.jwtService.sign(payload);
     
         if(!token){
