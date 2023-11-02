@@ -18,7 +18,7 @@ export class LoggerService{
                 new winston.transports.Console({
                     format: winston.format.combine(
                         winston.format.colorize(),
-                        winston.format.timestamp(), // <-- Añadir esto
+                        winston.format.timestamp(),
                         winston.format.printf(({ timestamp, level, message, context }) => {
                             return `${timestamp} ${level}: ${message} ${context ? JSON.stringify(context) : ''}`;
                         }),

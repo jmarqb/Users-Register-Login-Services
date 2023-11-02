@@ -67,7 +67,7 @@ export class UsersService {
       total: total,
       currentPage: offset / limit + 1,
       totalPages: totalPages
-    };;
+    };
   }
 
   //find user by id: valid UUID
