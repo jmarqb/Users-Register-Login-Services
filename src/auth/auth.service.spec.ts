@@ -121,7 +121,7 @@ const mockLoggerService = {
   
   describe('getJwtToken', () => {
     it('should return a jwt token', () => {
-      const payload: JwtPayload = { id: 'some-id' };
+      const payload: JwtPayload = { id: 'some-id', roles:['some-rol'] };
       
       mockJwtService.sign.mockReturnValue('mock-jwt-token');
   
@@ -131,7 +131,7 @@ const mockLoggerService = {
     });
   
     it('should log an error if jwt token cannot be generated', () => {
-      const payload: JwtPayload = { id: 'some-id' };
+      const payload: JwtPayload = { id: 'some-id', roles:['some-rol'] };
   
       mockJwtService.sign.mockReturnValue(undefined);
       
