@@ -132,7 +132,7 @@ $ docker-compose down
 execute the following command:
 
 ```bash
-$ docker-compose -f docker-development-locally.yaml up
+$ docker-compose -f docker-development-locally.yaml up -d
 ```
 
 ## Test
