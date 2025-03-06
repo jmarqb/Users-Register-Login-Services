@@ -90,7 +90,6 @@ export class UsersService {
     }
       
     if (!user){
-      console.log(user);
       this.logger.log('User not exists in database');
       throw new NotFoundException(`User with id: ${id} not exists in database`);
     }
@@ -146,11 +145,6 @@ export class UsersService {
       }
       this.handlerDbErrors(err_p);
     }
-    //Option 1:
-    //remove from database
-    // await this.userRepository.remove(user);
-
-    //TODO: Option 2 : change isActive : FALSE
     user.isActive = false;
     await this.userRepository.save(user);
 

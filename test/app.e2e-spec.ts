@@ -546,7 +546,6 @@ describe('AppController (e2e)', () => {
       await getUserIdToDelete();
 
       const user = await testUserRepository.findOne({where:{id:userIdToDelete}});
-      console.log('user:',user);
       user.isActive = false;
       await testUserRepository.save(user);
 

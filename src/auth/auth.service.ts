@@ -62,7 +62,6 @@ export class AuthService {
       }
     
       private getJwtToken(payload: JwtPayload) {
-        console.log('Token Payload:', payload);
         const token = this.jwtService.sign(payload);
     
         if(!token){
@@ -77,8 +76,7 @@ export class AuthService {
         if (error.code === '23505')
           throw new BadRequestException(error.detail);
     
-        console.log(error);
-    
+        this.logger.error(error);
         throw new InternalServerErrorException(`Please check server logs`);
     
       }
